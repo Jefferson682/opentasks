@@ -1,22 +1,24 @@
 package com.devnordestino.opentasks.entities;
 
+import com.devnordestino.opentasks.enums.Department;
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
-@Table(name="tb_user")
+@Table(name = "tb_user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String email;
-
-    @ManyToOne
-    @JoinColumn(name = "task_id")
-    private Task task;
+    private Department department;
 
     public User() {
-
+        Date created = new Date();
+        Date lastUpdate = new Date();
     }
 
     public Long getId() {
@@ -27,12 +29,20 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -43,11 +53,11 @@ public class User {
         this.email = email;
     }
 
-    public Task getTask() {
-        return task;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setTask(Task task) {
-        this.task = task;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }
