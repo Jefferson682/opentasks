@@ -1,8 +1,8 @@
 package com.devnordestino.opentasks.enums;
 
 public enum ClassificationTask {
-    REGISTRADO,
-    EXECUTANDO,
-    CANCELADO,
-    CONCLUÍDO;
+    REGISTERED,
+    EXECUTING,
+    CANCEL,
+    DONE;
 }
