@@ -15,10 +15,12 @@ public class User {
     private String lastName;
     private String email;
     private Department department;
+    private Date created;
+    private Date lastUpdate;
 
     public User() {
-        Date created = new Date();
-        Date lastUpdate = new Date();
+        this.created = new Date();
+        this.created = new Date();
     }
 
     public Long getId() {
@@ -59,5 +61,21 @@ public class User {
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Date lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 }

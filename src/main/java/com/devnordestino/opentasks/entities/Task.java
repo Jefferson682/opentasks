@@ -17,13 +17,15 @@ public class Task {
     private String description;
     private ClassificationTask classification;
     private StatusTask status;
+    private Date created;
+    private Date lastUpdate;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
     public Task(){
-        Date created = new Date();
-        Date lastUpdate = new Date();
+        this.created = new Date();
+        this.lastUpdate = new Date();
     }
 
     public Long getId() {
@@ -72,6 +74,22 @@ public class Task {
 
     public void setStatus(StatusTask status) {
         this.status = status;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Date lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 
     public User getUser() {
