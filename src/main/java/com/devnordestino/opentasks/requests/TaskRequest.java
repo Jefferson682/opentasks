@@ -3,6 +3,8 @@ package com.devnordestino.opentasks.requests;
 import com.devnordestino.opentasks.enums.ClassificationTask;
 import com.devnordestino.opentasks.enums.StatusTask;
 
+import java.util.Date;
+
 public class TaskRequest {
     private Long id;
     private String protocolNumber;
@@ -10,7 +12,8 @@ public class TaskRequest {
     private String description;
     private ClassificationTask classification;
     private StatusTask status;
-    private Long user;
+    private Long assignee_id;
+    private Long reporter_id;
 
     public Long getId() {
         return id;
@@ -60,11 +63,19 @@ public class TaskRequest {
         this.status = status;
     }
 
-    public Long getUser() {
-        return user;
+    public Long getAssignee_id() {
+        return assignee_id;
     }
 
-    public void setUser(Long user) {
-        this.user = user;
+    public void setAssignee_id(Long assignee_id) {
+        this.assignee_id = assignee_id;
+    }
+
+    public Long getReporter_id() {
+        return reporter_id;
+    }
+
+    public void setReporter_id(Long reporter_id) {
+        this.reporter_id = reporter_id;
     }
 }

@@ -1,9 +1,9 @@
 package com.devnordestino.opentasks.controllers;
 
+import com.devnordestino.opentasks.entities.People;
 import com.devnordestino.opentasks.entities.Task;
-import com.devnordestino.opentasks.entities.User;
+import com.devnordestino.opentasks.repositories.PeopleRepository;
 import com.devnordestino.opentasks.repositories.TaskRepository;
-import com.devnordestino.opentasks.repositories.UserRepository;
 import com.devnordestino.opentasks.requests.TaskRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,7 @@ public class TaskController {
     @Autowired
     private TaskRepository taskRepository;
     @Autowired
-    private UserRepository userRepository;
+    private PeopleRepository peopleRepository;
 
     @GetMapping
     public List<Task> findAll() {
@@ -31,12 +31,15 @@ public class TaskController {
     @PostMapping(value = "/insert")
     public Task insert(@RequestBody TaskRequest taskRequest){
         Task task = new Task();
-        if (taskRequest.getUser() != null) {
-            Long userId = taskRequest.getUser();
-            User user = userRepository.findById(userId).get();
-            task.setUser(user);
+        if (taskRequest.getAssignee_id() != null) {
+            People assignee = peopleRepository.findById(taskRequest.getAssignee_id()).get();
+            task.setAssignee(assignee);
         }else {
-            task.setUser(null);
+            task.setAssignee(null);
+        }
+        if (taskRequest.getReporter_id() != null) {
+            People reporter = peopleRepository.findById(taskRequest.getReporter_id()).get();
+            task.setReporter(reporter);
         }
         task.setClassification(taskRequest.getClassification());
         task.setStatus(taskRequest.getStatus());

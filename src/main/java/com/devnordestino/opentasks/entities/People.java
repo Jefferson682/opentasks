@@ -6,26 +6,21 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "tb_user")
-public class User {
+@Table(name = "tb_people")
+public class People {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Boolean active;
-    private String email;
-    private String password;
+    private String name;
+    private Department department;
     private Integer version;
     private Date created;
     private Date lastUpdate;
-    @ManyToOne
-    @JoinColumn(name = "people_id")
-    private People people;
 
-    public User() {
+    public People() {
         this.created = new Date();
         this.lastUpdate = new Date();
         this.version = 1;
-        this.active = true;
     }
 
     public Long getId() {
@@ -36,28 +31,20 @@ public class User {
         this.id = id;
     }
 
-    public Boolean getActive() {
-        return active;
+    public String getName() {
+        return name;
     }
 
-    public void setActive(Boolean active) {
-        this.active = active;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     public Integer getVersion() {
@@ -82,13 +69,5 @@ public class User {
 
     public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
-    }
-
-    public People getPeople() {
-        return people;
-    }
-
-    public void setPeople(People people) {
-        this.people = people;
     }
 }

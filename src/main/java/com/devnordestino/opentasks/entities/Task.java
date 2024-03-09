@@ -19,13 +19,18 @@ public class Task {
     private StatusTask status;
     private Date created;
     private Date lastUpdate;
+    private Integer version;
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "assignee")
+    private People assignee;
+    @ManyToOne
+    @JoinColumn(name = "reporter")
+    private People reporter;
 
     public Task(){
         this.created = new Date();
         this.lastUpdate = new Date();
+        this.version = 1;
     }
 
     public Long getId() {
@@ -92,11 +97,27 @@ public class Task {
         this.lastUpdate = lastUpdate;
     }
 
-    public User getUser() {
-        return user;
+    public Integer getVersion() {
+        return version;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+
+    public People getAssignee() {
+        return assignee;
+    }
+
+    public void setAssignee(People assignee) {
+        this.assignee = assignee;
+    }
+
+    public People getReporter() {
+        return reporter;
+    }
+
+    public void setReporter(People reporter) {
+        this.reporter = reporter;
     }
 }
